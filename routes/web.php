@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// for image upload view
+Route::post('upload', 'UploadController@view');
+// for image upload
+Route::post('upload', 'UploadController@upload');
+
+

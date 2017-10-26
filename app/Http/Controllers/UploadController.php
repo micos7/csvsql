@@ -16,7 +16,7 @@ class UploadController extends Controller {
 
 	public function upload(Request $request) {
 		$this->validate($request, [
-	    	'image' => 'mimes:jpeg,bmp,png', //only allow this type extension file.
+	    	'image' => 'mimes:jpeg,bmp,jpg,png', //only allow this type extension file.
 		]);
 
 		$file = $request->file('image');

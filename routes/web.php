@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/upload', function () {
+    return view('imageUpload');
+});
+
+
 // for image upload view
 Route::post('upload', 'UploadController@view');
 // for image upload

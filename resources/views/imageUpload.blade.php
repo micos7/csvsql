@@ -2,7 +2,7 @@
 <head>
 	<title>Laravel5.4 - Image upload with validation</title>
 	<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 </head>
 <body>
 	<div class="container">

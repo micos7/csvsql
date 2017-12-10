@@ -12,7 +12,7 @@
 				<div class="form-group">
 					<label>Select image to upload:</label>
 					<input type="hidden" value="{{ csrf_token() }}" name="_token">
-					<input type="file" name="image" id="file">
+					<input type="file" name="csvfile" id="file">
 				</div>
 				@if ($errors->has('image'))
 	            	<span class="help-block">

@@ -7,6 +7,7 @@ use Input;
 use Validator;
 use Redirect;
 use View;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UploadController extends Controller {
 

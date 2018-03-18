@@ -21,8 +21,12 @@ class UploadController extends Controller {
 		]);
 
 		$file = $request->file('csvfile');
+		$csv = array_map('str_getcsv', file($file ));
 		// image upload in public/upload folder.
 		$file->move('uploads', $file->getClientOriginalName()); 
 		echo 'File Uploaded Successfully';
+		echo "<pre>";
+		print_r($csv);
+		echo "</pre>";
 	}
 }

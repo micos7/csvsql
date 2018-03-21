@@ -19,6 +19,16 @@
 	                	<strong>{{ $errors->first('image') }}</strong>
 	            	</span>
 	        	@endif
+				@if (!empty($keys)) 
+
+					<div class="form-group">
+					@foreach ($keys as $key)
+					<label>{{ $key}}</label>
+					<input type="checkbox" id="{{ $key}}" name="interest" value="{{ $key }}">
+
+					@endforeach
+					</div>
+				@endif
 				<input type="submit" value="Upload" class="btn btn-default" name="submit">
 			</form>
 		</div>

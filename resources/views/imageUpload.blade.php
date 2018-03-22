@@ -14,12 +14,16 @@
 					<input type="hidden" value="{{ csrf_token() }}" name="_token">
 					<input type="file" name="csvfile" id="file">
 				</div>
+				<div class="form-group">
+					<label>First row contains the column names</label>
+					<input type="checkbox" id="columnnames" name="columnnames">
+				</div>
 				@if ($errors->has('image'))
 	            	<span class="help-block">
 	                	<strong>{{ $errors->first('image') }}</strong>
 	            	</span>
 	        	@endif
-				@if (!empty($keys)) 
+				@if (!empty($keys) AND $columnnames ) 
 
 					<div class="form-group">
 					@foreach ($keys as $key)

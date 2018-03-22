@@ -21,12 +21,13 @@ class UploadController extends Controller {
 		]);
 
 		$file = $request->file('csvfile');
+		$columnnames = $request->input('columnnames');
 		$csv = array_map('str_getcsv', file($file ));
 		$keys = array_shift($csv);
 		// image upload in public/upload folder.
 		$file->move('uploads', $file->getClientOriginalName()); 
 		echo 'File Uploaded Successfully';
-		return view('imageUpload')->with('keys',$keys);
+		return view('imageUpload', compact('keys','columnnames'));
 		// echo "<pre>";
 		// print_r($csv);
 		// echo "</pre>";

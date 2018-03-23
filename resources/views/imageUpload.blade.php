@@ -6,8 +6,10 @@
 </head>
 <body>
 	<div class="container">
-		<div class="content">
-			<h1>File Upload</h1>
+		<div class="row">
+		<div class="col-md-6 offset-md-2">
+			<div class="content card">
+				<h1 class="text-center">File Upload</h1>
 			<form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>Select image to upload:</label>
@@ -35,6 +37,8 @@
 				@endif
 				<input type="submit" value="Upload" class="btn btn-default" name="submit">
 			</form>
+		</div>
+	</div>
 		</div>
 	</div>
 </body>

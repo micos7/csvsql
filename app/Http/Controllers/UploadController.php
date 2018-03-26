@@ -24,6 +24,10 @@ class UploadController extends Controller {
 
 		$file = $request->file('csvfile');
 		$reader = ReaderFactory::create(Type::CSV); // for CSV files
+		$reader->setFieldDelimiter(',');
+		$reader->setFieldEnclosure('@');
+		$reader->setEndOfLineCharacter("\r");
+		$reader->setEncoding('UTF-8');
 		$reader->open($file);
 
 		foreach ($reader->getSheetIterator() as $sheet) {

@@ -31,8 +31,14 @@ class UploadController extends Controller {
 		$reader->open($file);
 
 		foreach ($reader->getSheetIterator() as $sheet) {
-			foreach ($sheet->getRowIterator() as $row) {
-				// do stuff with the row
+			// var_dump($sheet);
+			foreach ($sheet->getRowIterator() as $rowNumber => $row) {
+				if($rowNumber == 1){
+
+					echo '<pre>';
+					print_r($row);
+					echo '</pre>';
+				}
 			}
 		}
 

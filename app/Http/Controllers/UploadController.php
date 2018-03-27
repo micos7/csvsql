@@ -34,10 +34,10 @@ class UploadController extends Controller {
 			// var_dump($sheet);
 			foreach ($sheet->getRowIterator() as $rowNumber => $row) {
 				if($rowNumber == 1){
-
-					echo '<pre>';
-					print_r($row);
-					echo '</pre>';
+					$keys = $row;
+					// echo '<pre>';
+					// print_r($row);
+					// echo '</pre>';
 				}
 			}
 		}
@@ -49,7 +49,7 @@ class UploadController extends Controller {
 		// image upload in public/upload folder.
 		//$file->move('uploads', $file->getClientOriginalName()); 
 		echo 'File Uploaded Successfully';
-		//return view('imageUpload', compact('keys','columnnames'));
+		return view('imageUpload', compact('keys','columnnames'));
 		// echo "<pre>";
 		// print_r($csv);
 		// echo "</pre>";

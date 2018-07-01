@@ -14,7 +14,7 @@
 				<div class="form-group">
 						<label>Select csv file to upload:</label>
 					<input type="hidden" value="{{ csrf_token() }}" name="_token">
-					<input type="file" name="csvfile" id="file">
+						<input type="file" name="csvfile" id="csvfile">
 				</div>
 				<div class="form-group">
 					<label>First row contains the column names</label>
@@ -35,6 +35,7 @@
 					@endforeach
 					</div>
 				@endif
+					<textarea name="" id="csvTextArea" cols="30" rows="10"></textarea>
 				<input type="submit" value="Upload" class="btn btn-default" name="submit">
 			</form>
 		</div>
@@ -43,3 +44,35 @@
 	</div>
 </body>
 </html>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.5.0/papaparse.min.js"></script>
+<script>
+	var response = [];
+	 $(function() {
+     $("#csvfile").change(function (){
+
+	   var fileName = document.getElementById('csvfile').files[0];
+	   
+	    Papa.parse(fileName, {
+			header: true,
+			dynamicTyping: true,
+			complete: function(results) {
+				//console.log("Finished:", results.data);
+				response = results.data;
+				console.log(response)
+				$("#csvTextArea").val(Object.keys(response[0]))
+			}
+		});
+		console.log(response)
+		// $("#csvTextArea").val(hh.join("\n"))
+  
+     });
+  });
+    
+
+
+
+</script>

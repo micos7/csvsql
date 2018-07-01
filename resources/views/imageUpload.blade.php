@@ -63,7 +63,10 @@
 				//console.log("Finished:", results.data);
 				response = results.data;
 				console.log(response)
-				$("#csvTextArea").val(Object.keys(response[0]))
+				for(var i = 0;i< response.length;i++){
+					response[i] = JSON.stringify(response[i])
+				}
+				$("#csvTextArea").val(response)
 			}
 		});
 		console.log(response)

@@ -7,7 +7,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-		<div class="col-md-6 offset-md-2">
+		<div class="col-md-12 col-lg-12 col-sm-12">
 			<div class="content card">
 				<h1 class="text-center">File Upload</h1>
 			<form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">
@@ -35,8 +35,10 @@
 					@endforeach
 					</div>
 				@endif
-					<textarea name="" id="csvTextArea" cols="30" rows="10"></textarea>
-				<input type="submit" value="Upload" class="btn btn-default" name="submit">
+					<textarea class="form-control" name="" id="csvTextArea" rows="10"></textarea>
+					<div class="form-group">
+						<input  type="submit" value="Upload" class="btn btn-default" name="submit">
+					</div>
 			</form>
 		</div>
 	</div>

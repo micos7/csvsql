@@ -11,15 +11,18 @@
 			<div class="content card">
 				<h1 class="text-center">File Upload</h1>
 			<form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">
+					@if (empty($keys) )
 				<div class="form-group">
 						<label for="csvfile">Select csv file to upload:</label>
 					<input type="hidden" value="{{ csrf_token() }}" name="_token">
 						<input class="form-control" type="file" name="csvfile" id="csvfile">
 				</div>
+					
 					<div class="form-check">
 						<input class="form-check-input" type="checkbox" id="columnnames" name="columnnames">
 						<label  for="columnnames">First row contains the column names</label>
 				</div>
+					@endif
 				@if ($errors->has('image'))
 	            	<span class="help-block">
 	                	<strong>{{ $errors->first('image') }}</strong>
@@ -29,16 +32,20 @@
 
 						<div class="form-check">
 					@foreach ($keys as $key)
-						
+						<div class="card">
 						<input class="form-check-input" type="checkbox" id="{{ $key}}" name="interest" value="{{ $key }}">
 					<label>{{ $key}}</label>
+						</div>
 					@endforeach
 					</div>
+						<div>{{ $query}}</div>
 				@endif
 					<textarea class="form-control" name="" id="csvTextArea" rows="10"></textarea>
+					@if (empty($keys) )
 					<div class="form-group">
 						<input  type="submit" value="Upload" class="btn btn-default" name="submit">
 					</div>
+					@endif
 			</form>
 		</div>
 	</div>

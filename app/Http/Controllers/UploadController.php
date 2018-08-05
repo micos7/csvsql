@@ -30,6 +30,8 @@ class UploadController extends Controller {
 		$reader->setEncoding('UTF-8');
 		$reader->open($file);
 
+		$query = "INSERT INTO TABLE(";
+
 		foreach ($reader->getSheetIterator() as $sheet) {
 			// var_dump($sheet);
 			foreach ($sheet->getRowIterator() as $rowNumber => $row) {
@@ -38,8 +40,13 @@ class UploadController extends Controller {
 					// echo '<pre>';
 					// print_r($row);
 					// echo '</pre>';
+					foreach($keys as $key){
+						$query .= "`$key`,";
 				}
+					$query = rtrim($query,",");
+					$query .=")";
 			}
+		}
 		}
 
 		$reader->close();
@@ -49,7 +56,7 @@ class UploadController extends Controller {
 		// image upload in public/upload folder.
 		//$file->move('uploads', $file->getClientOriginalName()); 
 		echo 'File Uploaded Successfully';
-		return view('imageUpload', compact('keys','columnnames'));
+		return view('imageUpload', compact('keys','columnnames','query'));
 		// echo "<pre>";
 		// print_r($csv);
 		// echo "</pre>";

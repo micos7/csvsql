@@ -31,23 +31,33 @@ class UploadController extends Controller {
 		$reader->open($file);
 
 		$query = "INSERT INTO TABLE(";
+		$values = " VALUES";
 
 		foreach ($reader->getSheetIterator() as $sheet) {
 			// var_dump($sheet);
 			foreach ($sheet->getRowIterator() as $rowNumber => $row) {
 				if($rowNumber == 1){
 					$keys = $row;
-					// echo '<pre>';
-					// print_r($row);
-					// echo '</pre>';
 					foreach($keys as $key){
 						$query .= "`$key`,";
 				}
+					
 					$query = rtrim($query,",");
 					$query .=")";
+
+				}else{
+					$values .="(";
+					foreach($row as $vals){
+						$values .= "'".$vals."',";
+					}
+					$values = rtrim($values,",");
+					$values .="),";
 			}
 		}
+			$values = rtrim($values,",");
+			$query .= $values;
 		}
+
 
 		$reader->close();
 		$columnnames = $request->input('columnnames');
